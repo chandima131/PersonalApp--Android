@@ -5,5 +5,8 @@
     <string name="expenses">MY EXPENSES</string>
     <string name="tasks">MY TASKS</string>
     <string name="my_profile">MY PROFILE</string>
+    <string name="your_name">Your Name</string>
+    <string name="your_email">Your Email</string>
+    <string name="your_mobile">Your Mobile</string>
 
 </resources>

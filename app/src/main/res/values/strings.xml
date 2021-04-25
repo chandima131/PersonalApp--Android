@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">PAPP</string>
+    <string name="app_title">PERSONAL APP</string>
+    <string name="notes">MY NOTES</string>
+    <string name="expenses">MY EXPENSES</string>
+    <string name="tasks">MY TASKS</string>
+    <string name="my_profile">MY PROFILE</string>
+
+</resources>

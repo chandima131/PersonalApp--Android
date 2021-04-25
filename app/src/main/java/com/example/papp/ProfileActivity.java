@@ -22,6 +22,20 @@ public class ProfileActivity extends AppCompatActivity {
         etMobile = findViewById(R.id.mobile);
     }
 
+    @Override
+    protected void onResume() { // back wela ena hema welawakama storage eken retreview krala gannawa
+        super.onResume();
+        SharedPreferences profile = getSharedPreferences("profile", Context.MODE_PRIVATE);
+        String name = profile.getString("NAME", "");
+        String email = profile.getString("EMAIL", "");
+        String mobile = profile.getString("MOBILE", "");
+
+        etName.setText(name);
+        etEmail.setText(email);
+        etMobile.setText(mobile);
+
+    }
+
     public void clear(View v){
         etName.setText("");
         etEmail.setText("");

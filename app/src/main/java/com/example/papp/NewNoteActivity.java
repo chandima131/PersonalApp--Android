@@ -8,8 +8,11 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class NewNoteActivity extends AppCompatActivity {
 
@@ -19,31 +22,37 @@ public class NewNoteActivity extends AppCompatActivity {
         setContentView(R.layout.activity_new_note);
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        EditText etNote = findViewById(R.id.note_text);
-
-        try {
-            FileInputStream fis = openFileInput("myfile.txt");
-            byte[] chars = new byte[fis.available()];
-            fis.read(chars);
-            fis.close();
-            String text = new String(chars);
-            etNote.setText(text);
-
-        }catch (Exception e){
-            e.printStackTrace();
-            Toast.makeText(this, "Error: Failed to Read the file", Toast.LENGTH_LONG).show();
-        }
-    }
+//    @Override
+//    protected void onResume() {
+//        super.onResume();
+//        EditText etNote = findViewById(R.id.note_text);
+//
+//        try {
+//            FileInputStream fis = openFileInput("myfile.txt");
+//            byte[] chars = new byte[fis.available()];
+//            fis.read(chars);
+//            fis.close();
+//            String text = new String(chars);
+//            etNote.setText(text);
+//
+//        }catch (Exception e){
+//            e.printStackTrace();
+//            Toast.makeText(this, "Error: Failed to Read the file", Toast.LENGTH_LONG).show();
+//        }
+//    }
 
     public void save (View v){
         EditText etNote = findViewById(R.id.note_text);
         String text = etNote.getText().toString();
 
         try {
-            FileOutputStream fos = openFileOutput("myfile.txt", Context.MODE_PRIVATE);
+            SimpleDateFormat sdf = new SimpleDateFormat("yyMMddHHmmss");
+            String name = sdf.format(new Date());
+            String fileName = getFilesDir()+ File.separator + name + ".txt";
+
+//            FileOutputStream fos = openFileOutput("myfile.txt", Context.MODE_PRIVATE);
+            FileOutputStream fos = new FileOutputStream(fileName);
+
             fos.write(text.getBytes());
             fos.close();
 
